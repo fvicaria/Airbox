@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  airbox:
+    image: ${DOCKER_REGISTRY-}airbox
+    build:
+      context: .
+      dockerfile: Airbox/Dockerfile
