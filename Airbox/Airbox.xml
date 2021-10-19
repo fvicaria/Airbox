@@ -51,14 +51,14 @@
         </member>
         <member name="M:Airbox.Controllers.UserController.Delete(System.String)">
             <summary>
-            Delete a user
+            delete a user
             </summary>
             <param name="name"></param>
             <returns>string</returns>
         </member>
         <member name="M:Airbox.Controllers.UserLocationController.Put(System.String,Airbox.Entities.Location)">
             <summary>
-            Update a users location
+            1.	Receive a location update for a user)
             </summary>
             <param name="userName"></param>
             <param name="loc"></param>
@@ -66,13 +66,30 @@
         </member>
         <member name="M:Airbox.Controllers.UserLocationController.Get(System.String)">
             <summary>
-            Get the location of a User by username
+            2.	Return the current location for a specified user)
             </summary>
             <param name="userName"></param>
             <returns></returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Airbox.Controllers.UserLocationController.GetHistory(System.String)" -->
-        <!-- Badly formed XML comment ignored for member "M:Airbox.Controllers.UserLocationController.GetCurrentLocations" -->
-        <!-- Badly formed XML comment ignored for member "M:Airbox.Controllers.UserLocationController.GetLocationsInArea(System.String)" -->
+        <member name="M:Airbox.Controllers.UserLocationController.GetHistory(System.String)">
+            <summary>
+            3.	Return the location history for a specified user
+            </summary>
+            <param name="userName"></param>
+            <returns> List[Location] </returns>
+        </member>
+        <member name="M:Airbox.Controllers.UserLocationController.GetCurrentLocations">
+            <summary>
+            4.	Return the current location for all users
+            </summary>
+            <returns>List[UserLocation]</returns>
+        </member>
+        <member name="M:Airbox.Controllers.UserLocationController.GetLocationsInArea(System.String)">
+            <summary>
+            5.	Return the current location for all users within a specified area
+            </summary>
+            <param name="areaName"></param>
+            <returns>List[UserLocation]</returns>
+        </member>
     </members>
 </doc>

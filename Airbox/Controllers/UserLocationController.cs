@@ -26,10 +26,9 @@ namespace Airbox.Controllers
             Repository = repository;
         }
 
-        // 1.	Receive a location update for a user
-        // PUT api/<UserLocationController>/john
+
         /// <summary>
-        /// Update a users location
+        /// 1.	Receive a location update for a user)
         /// </summary>
         /// <param name="userName"></param>
         /// <param name="loc"></param>
@@ -59,10 +58,9 @@ namespace Airbox.Controllers
             return Ok();
         }
 
-        // 2.	Return the current location for a specified user
-        // GET api/<UserLocationController>/john
+
         /// <summary>
-        /// Get the location of a User by username
+        /// 2.	Return the current location for a specified user)
         /// </summary>
         /// <param name="userName"></param>
         /// <returns></returns>
@@ -81,13 +79,12 @@ namespace Airbox.Controllers
             return Ok(user.Location);
         }
 
-        // 3.	Return the location history for a specified user
-        // GET api/<UserLocationController>/john
+
         /// <summary>
-        /// Get a list of where a user historical locations
+        /// 3.	Return the location history for a specified user
         /// </summary>
         /// <param name="userName"></param>
-        /// <returns><List<Location></returns>
+        /// <returns> List[Location] </returns>
         [HttpGet("{userName}/history")]
         public ActionResult<List<Location>> GetHistory(string userName)
         {
@@ -102,12 +99,11 @@ namespace Airbox.Controllers
             return Ok(user.History);
         }
 
-        // 4.	Return the current location for all users
-        // GET api/<UserLocationController>/
+
         /// <summary>
-        /// Get all user/Locations
+        /// 4.	Return the current location for all users
         /// </summary>
-        /// <returns><List<UserLocation>></returns>
+        /// <returns>List[UserLocation]</returns>
         [HttpGet()]
         public ActionResult<List<UserLocation>> GetCurrentLocations()
         {
@@ -125,12 +121,11 @@ namespace Airbox.Controllers
             return Ok(locs);
         }
 
-        // 5.	Return the current location for all users within a specified area
         /// <summary>
-        /// Return the current location for all users within a specified area
+        /// 5.	Return the current location for all users within a specified area
         /// </summary>
         /// <param name="areaName"></param>
-        /// <returns>List<UserLocation></returns>
+        /// <returns>List[UserLocation]</returns>
         [HttpGet("area/{areaName}")]
         public ActionResult<List<UserLocation>> GetLocationsInArea(string areaName)
         {
