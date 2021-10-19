@@ -35,7 +35,7 @@ namespace Airbox.Controllers
         /// <param name="loc"></param>
         /// <returns>bool</returns>
         [HttpPut("{userName}")]
-        public ActionResult Put(string userName, [FromBody] Location loc)
+        public ActionResult Put(string userName, [FromBody] ILocation loc)
         {
             Logger.LogInformation($"UserLocationController:Put{userName} {loc.Name}");
             var user = Repository.GetUser(userName);
@@ -47,14 +47,14 @@ namespace Airbox.Controllers
             {
                 if (string.IsNullOrEmpty(loc.Name) || string.IsNullOrEmpty(loc.Area))
                 {
-                    Logger.LogWarning($"Locationhas no name and/or area.");
+                    Logger.LogWarning($"Location has no name and/or area.");
                     return BadRequest("Location must have name and area.");
                 }
                 Repository.AddLocation(loc);
                 location = loc;
             }
-            location.Date = DateTime.Now;
-            user.History.Add(location);
+
+            user.Location = location;
 
             return Ok();
         }
@@ -67,7 +67,7 @@ namespace Airbox.Controllers
         /// <param name="userName"></param>
         /// <returns></returns>
         [HttpGet("{userName}")]
-        public ActionResult<Location> Get(string userName)
+        public ActionResult<ILocation> Get(string userName)
         {
             Logger.LogInformation($"UserLocationController:Get{userName}");
 
@@ -89,7 +89,7 @@ namespace Airbox.Controllers
         /// <param name="userName"></param>
         /// <returns><List<Location></returns>
         [HttpGet("{userName}/history")]
-        public ActionResult<List<Location>> GetHistory(string userName)
+        public ActionResult<List<ILocation>> GetHistory(string userName)
         {
             Logger.LogInformation($"UserLocationController:GetHistory {userName}");
 
@@ -109,12 +109,12 @@ namespace Airbox.Controllers
         /// </summary>
         /// <returns><List<UserLocation>></returns>
         [HttpGet()]
-        public ActionResult<List<UserLocation>> GetCurrentLocations()
+        public ActionResult<List<IUserLocation>> GetCurrentLocations()
         {
             Logger.LogInformation($"UserLocationController:GetCurrentLocations");
 
             var users = Repository.Users;
-            var locs = new List<UserLocation>();
+            var locs = new List<IUserLocation>();
 
             foreach (var user in users)
             {
@@ -132,7 +132,7 @@ namespace Airbox.Controllers
         /// <param name="areaName"></param>
         /// <returns>List<UserLocation></returns>
         [HttpGet("/area/{areaName}")]
-        public ActionResult<List<UserLocation>> GetLocationsInArea(string areaName)
+        public ActionResult<List<IUserLocation>> GetLocationsInArea(string areaName)
         {
             Logger.LogInformation($"UserLocationController:GetLocationsInArea {areaName}");
 

@@ -6,30 +6,34 @@ using System.Linq;
 
 namespace Airbox.Entities
 {
-    public class User : IUser
+    public class User: IUser
     {
-        private readonly List<ILocation> _history = new List<ILocation>();
+        private readonly List<(string, DateTime)> _history = new List<(string, DateTime)>();
+        private ILocation _location;
 
         public string Name { get; set; }
 
-        public ILocation Location
-        { 
-            get 
-            {
-                if (_history.Count > 0)
-                    return _history.Last();
-                else
-                    return null;
-            }
-            set { _history.Add(value); }
-        }
-        public IList<ILocation> History { get { return _history; } }
-
-        public void AddLocation(ILocation location)
+        public ILocation Location 
         {
-            if (location != null && _history.Count > 0 && location.Name != _history.Last().Name)
-                _history.Add(location);
+            get { return _location;  }
+
+            set
+            {
+                if (_history.Count == 0)
+                {
+                    _location = value;
+                    _history.Add((value.Name, DateTime.Now));
+                }
+
+
+                if (value != null && _history.Count > 0 && value.Name != _history.Last().Item1)
+                {
+                    _history.Add((value.Name, DateTime.Now));
+                    _location = value;
+                }
+            }
         }
+        public IList<(string, DateTime)> History { get { return _history; } }
 
         public void Clear()
         {

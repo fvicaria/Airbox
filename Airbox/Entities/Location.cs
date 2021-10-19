@@ -10,6 +10,5 @@ namespace Airbox.Entities
     {
         public string Name { get; set; }
         public string Area { get; set; }
-        public DateTime? Date { get; set; }
     }
 }

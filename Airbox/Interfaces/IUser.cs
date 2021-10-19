@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Airbox.Interfaces
 {
@@ -6,8 +7,6 @@ namespace Airbox.Interfaces
     {
         ILocation Location { get; set; }
         string Name { get; set; }
-        IList<ILocation> History { get; }
-
-        void AddLocation(ILocation location);
+        IList<(string, DateTime)> History { get; }
     }
 }

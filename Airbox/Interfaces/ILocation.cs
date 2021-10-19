@@ -7,6 +7,5 @@ namespace Airbox.Interfaces
     {
         string Name { get; set; }
         string Area { get; set; }
-        DateTime? Date { get; set; }
     }
 }

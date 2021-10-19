@@ -31,11 +31,12 @@ namespace Airbox.Controllers
         /// <summary>
         /// Get All locations
         /// </summary>
-        /// <returns>IEnumerable<Location></returns>
+        /// <returns>IEnumerable<ILocation></returns>
         [HttpGet]
-        public IEnumerable<Location> Get()
+        public ActionResult<IEnumerable<ILocation>> Get()
         {
-            return Repository.Locations as IEnumerable<Location>;
+            Logger.LogInformation($"LocationController:Get");
+            return Ok(Repository.Locations);
         }
 
         // GET api/<LocationController>/USA
@@ -45,10 +46,10 @@ namespace Airbox.Controllers
         /// <param name="name"></param>
         /// <returns>Location</returns>
         [HttpGet("{name}")]
-        public Location Get(string name)
+        public ActionResult<ILocation> Get(string name)
         {
             Logger.LogInformation($"LocationController:Get{name}");
-            return Repository.GetLocation(name) as Location;
+            return Ok(Repository.GetLocation(name));
         }
 
         // POST api/<LocationController>
@@ -58,17 +59,17 @@ namespace Airbox.Controllers
         /// <param name="loc"></param>
         /// <returns>string</returns>
         [HttpPost]
-        public ActionResult Post([FromBody] Location loc)
+        public ActionResult Post([FromBody] ILocation loc)
         {
             if (loc != null && !string.IsNullOrEmpty(loc.Name) && !string.IsNullOrEmpty(loc.Area))
             {
                 if (Repository.GetLocation(loc.Name) == null)
                 {
                     Repository.Locations.Add(loc);
-                    Logger.LogInformation($"LocationController:Post{loc.Name} {loc.Area} {loc.Date}");
+                    Logger.LogInformation($"LocationController:Post{loc.Name} {loc.Area}");
                     return Ok();
                 }
-                Logger.LogWarning($"LocationController:Post Location already exists! {loc.Name} {loc.Area} {loc.Date}");
+                Logger.LogWarning($"LocationController:Post Location already exists! {loc.Name} {loc.Area}");
 
                 return Accepted("Location already exists!");
             }
@@ -111,7 +112,7 @@ namespace Airbox.Controllers
         [HttpDelete("{name}")]
         public ActionResult Delete(string name)
         {
-            var loc = Repository.Locations.FirstOrDefault(u => u.Name == name);
+            ILocation loc = Repository.Locations.FirstOrDefault(u => u.Name == name);
             if (loc != null)
             {
                 Repository.Locations.Remove(loc);

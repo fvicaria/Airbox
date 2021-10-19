@@ -8,7 +8,7 @@ namespace Airbox.Entities
 {
     // DTO 
     [Serializable]
-    public class UserLocation
+    public class UserLocation: IUserLocation
     {
         public IUser User { get; set; }
         public ILocation Location { get; set; }
