@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Airbox.Interfaces
+namespace Airbox.Entities
 {
     public interface IUser
     {
-        ILocation Location { get; set; }
-        string Name { get; set; }
-        IList<(string, DateTime)> History { get; }
+        public string Name { get; set; }
+
+        public Location Location { get; set; }
+        public List<Tuple<string, DateTime>> History { get; }
+
+        public void Clear();
     }
 }

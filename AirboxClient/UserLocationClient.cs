@@ -12,7 +12,6 @@ namespace AirboxClient
     {
         public UserLocationClient(IConfiguration config) : base(config)
         {
-            baseUrl = "api/UserLocation";
         }
 
        
@@ -56,7 +55,7 @@ namespace AirboxClient
         /// </summary>
         /// <param name="userName"></param>
         /// <returns>bool</returns>
-        public string SetUserLocation(string userName, ILocation location)
+        public string SetUserLocation(string userName, Location location)
         {
             var requestUri = $"api/UserLocation/{userName}";
             var request = new HttpRequestMessage(HttpMethod.Put, requestUri)
@@ -77,7 +76,7 @@ namespace AirboxClient
         /// <returns>List<Location> </returns>
         public List<UserLocation> GetUserLocationsInArea(string area)
         {
-            var requestUri = $"api/area/{area}";
+            var requestUri = $"api/UserLocation/area/{area}";
             var request = new HttpRequestMessage(HttpMethod.Get, requestUri);
            
             return ExecuteRequest<List<UserLocation>>(request);

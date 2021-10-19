@@ -31,7 +31,7 @@ namespace Airbox.Controllers
         /// </summary>
         /// <returns>IEnumerable<User>> </returns>
         [HttpGet]
-        public ActionResult<IEnumerable<IUser>> Get()
+        public ActionResult<IEnumerable<User>> Get()
         {
             Logger.LogInformation($"UserController:Get");
             return Ok(Repository.Users);
@@ -45,9 +45,9 @@ namespace Airbox.Controllers
         /// <returns>User</returns>
 
         [HttpGet("{name}")]
-        public ActionResult<IUser> Get(string name)
+        public ActionResult<User> Get(string name)
         {
-            IUser user = Repository.GetUser(name);
+            User user = Repository.GetUser(name);
             Logger.LogInformation($"UserController:Get {name}");
             if (user == null)
             {
@@ -65,7 +65,7 @@ namespace Airbox.Controllers
         /// <param name="user"></param>
         /// <returns>string</returns>
         [HttpPost]
-        public ActionResult Post([FromBody] IUser user)
+        public ActionResult Post([FromBody] User user)
         {
             if (user != null && !string.IsNullOrEmpty(user.Name))
             {

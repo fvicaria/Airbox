@@ -1,11 +1,8 @@
-﻿using System;
-
-namespace Airbox.Interfaces
-
+﻿namespace Airbox.Entities
 {
     public interface IUserLocation
     {
-        IUser User { get; set; }
-        ILocation Location { get; set; }
+        User User { get; set; }
+        Location Location { get; set; }
     }
 }

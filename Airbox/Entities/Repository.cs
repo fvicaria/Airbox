@@ -6,7 +6,7 @@ namespace Airbox.Controllers
 {
     public class Repository: IRepository
     {
-        private static readonly List<ILocation> _locations = new()
+        private static readonly List<Location> _locations = new()
         {
             new Location { Name = "USA", Area = "North America"},
             new Location { Name = "UK", Area = "Europe" },
@@ -16,7 +16,7 @@ namespace Airbox.Controllers
             new Location { Name = "Mexico", Area = "North America" },
             new Location { Name = "France", Area = "Europe" },
         };
-        private static readonly List<IUser> _users = new()
+        private static readonly List<User> _users = new()
         {
             new User { Name = "John" },
             new User { Name = "Mary" },
@@ -25,12 +25,12 @@ namespace Airbox.Controllers
 
         // Locations
         // ===================================================
-        public IList<ILocation> Locations 
+        public IList<Location> Locations 
         {
             get { return _locations; }
         }
 
-        public void AddLocation(ILocation location)
+        public void AddLocation(Location location)
         {
             if (location != null)
             {
@@ -40,7 +40,7 @@ namespace Airbox.Controllers
             }
         }
 
-        public ILocation GetLocation(string name)
+        public Location GetLocation(string name)
         {
             return _locations.Find(l => l.Name == name);
         }
@@ -48,12 +48,12 @@ namespace Airbox.Controllers
 
         // Users 
         // ===================================================
-        public IList<IUser> Users
+        public IList<User> Users
         {
             get { return _users; }
         }
 
-        public void AddUser(IUser user)
+        public void AddUser(User user)
         {
             if (user != null)
             {
@@ -63,7 +63,7 @@ namespace Airbox.Controllers
             }
         }
 
-        public IUser GetUser(string name)
+        public User GetUser(string name)
         {
             return _users.Find(l => l.Name == name);
         }

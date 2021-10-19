@@ -10,7 +10,7 @@ namespace Airbox.Entities
     [Serializable]
     public class UserLocation: IUserLocation
     {
-        public IUser User { get; set; }
-        public ILocation Location { get; set; }
+        public User User { get; set; }
+        public Location Location { get; set; }
     }
 }

@@ -8,12 +8,12 @@ namespace Airbox.Entities
 {
     public class User: IUser
     {
-        private readonly List<(string, DateTime)> _history = new List<(string, DateTime)>();
-        private ILocation _location;
+        private readonly List<Tuple<string, DateTime>> _history = new List<Tuple<string, DateTime>>();
+        private Location _location;
 
         public string Name { get; set; }
 
-        public ILocation Location 
+        public Location Location 
         {
             get { return _location;  }
 
@@ -22,18 +22,18 @@ namespace Airbox.Entities
                 if (_history.Count == 0)
                 {
                     _location = value;
-                    _history.Add((value.Name, DateTime.Now));
+                    _history.Add(new Tuple<string, DateTime>(value.Name, DateTime.Now));
                 }
 
 
                 if (value != null && _history.Count > 0 && value.Name != _history.Last().Item1)
                 {
-                    _history.Add((value.Name, DateTime.Now));
+                    _history.Add(new Tuple<string, DateTime>(value.Name, DateTime.Now));
                     _location = value;
                 }
             }
         }
-        public IList<(string, DateTime)> History { get { return _history; } }
+        public List<Tuple<string, DateTime>> History { get { return _history; } }
 
         public void Clear()
         {

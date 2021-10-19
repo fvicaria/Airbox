@@ -31,9 +31,9 @@ namespace Airbox.Controllers
         /// <summary>
         /// Get All locations
         /// </summary>
-        /// <returns>IEnumerable<ILocation></returns>
+        /// <returns>IEnumerable<Location></returns>
         [HttpGet]
-        public ActionResult<IEnumerable<ILocation>> Get()
+        public ActionResult<IEnumerable<Location>> Get()
         {
             Logger.LogInformation($"LocationController:Get");
             return Ok(Repository.Locations);
@@ -46,7 +46,7 @@ namespace Airbox.Controllers
         /// <param name="name"></param>
         /// <returns>Location</returns>
         [HttpGet("{name}")]
-        public ActionResult<ILocation> Get(string name)
+        public ActionResult<Location> Get(string name)
         {
             Logger.LogInformation($"LocationController:Get{name}");
             return Ok(Repository.GetLocation(name));
@@ -59,7 +59,7 @@ namespace Airbox.Controllers
         /// <param name="loc"></param>
         /// <returns>string</returns>
         [HttpPost]
-        public ActionResult Post([FromBody] ILocation loc)
+        public ActionResult Post([FromBody] Location loc)
         {
             if (loc != null && !string.IsNullOrEmpty(loc.Name) && !string.IsNullOrEmpty(loc.Area))
             {
@@ -112,7 +112,7 @@ namespace Airbox.Controllers
         [HttpDelete("{name}")]
         public ActionResult Delete(string name)
         {
-            ILocation loc = Repository.Locations.FirstOrDefault(u => u.Name == name);
+            Location loc = Repository.Locations.FirstOrDefault(u => u.Name == name);
             if (loc != null)
             {
                 Repository.Locations.Remove(loc);

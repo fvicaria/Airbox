@@ -1,4 +1,5 @@
 ﻿using Airbox.Entities;
+using Airbox.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using System;

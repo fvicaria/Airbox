@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -82,7 +83,6 @@ namespace AirboxClient
                 try
                 {
                     var result = response.Content.ReadAsStringAsync().Result;
-
                     return JsonConvert.DeserializeObject<T>(result);
                 }
                 catch (IOException e)

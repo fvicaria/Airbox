@@ -1,7 +1,4 @@
-﻿using System;
-
-namespace Airbox.Interfaces
-
+﻿namespace Airbox.Entities
 {
     public interface ILocation
     {
