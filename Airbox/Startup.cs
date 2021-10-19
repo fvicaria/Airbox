@@ -32,6 +32,7 @@ namespace Airbox
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Airbox", Version = "v1" });
+                c.IncludeXmlComments("Airbox.xml");
             });
 
             services.AddSingleton<IRepository, Repository>();

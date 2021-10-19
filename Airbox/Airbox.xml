@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Airbox</name>
+    </assembly>
+    <members>
+        <!-- Badly formed XML comment ignored for member "M:Airbox.Controllers.LocationController.Get" -->
+        <member name="M:Airbox.Controllers.LocationController.Get(System.String)">
+            <summary>
+            Get a Location by its name
+            </summary>
+            <param name="name"></param>
+            <returns>Location</returns>
+        </member>
+        <member name="M:Airbox.Controllers.LocationController.Post(Airbox.Entities.Location)">
+            <summary>
+            Add a new Location
+            </summary>
+            <param name="loc"></param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Airbox.Controllers.LocationController.Put(System.String,System.String)">
+            <summary>
+            Update a location area
+            </summary>
+            <param name="name"></param>
+            <param name="area"></param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Airbox.Controllers.LocationController.Delete(System.String)">
+            <summary>
+            Delete a location
+            </summary>
+            <param name="name"></param>
+            <returns>string</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Airbox.Controllers.UserController.Get" -->
+        <member name="M:Airbox.Controllers.UserController.Get(System.String)">
+            <summary>
+            Get a user by name
+            </summary>
+            <param name="name"></param>
+            <returns>User</returns>
+        </member>
+        <member name="M:Airbox.Controllers.UserController.Post(Airbox.Entities.User)">
+            <summary>
+            Add a new user
+            </summary>
+            <param name="user"></param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Airbox.Controllers.UserController.Delete(System.String)">
+            <summary>
+            Delete a user
+            </summary>
+            <param name="name"></param>
+            <returns>string</returns>
+        </member>
+        <member name="M:Airbox.Controllers.UserLocationController.Put(System.String,Airbox.Entities.Location)">
+            <summary>
+            Update a users location
+            </summary>
+            <param name="userName"></param>
+            <param name="loc"></param>
+            <returns>bool</returns>
+        </member>
+        <member name="M:Airbox.Controllers.UserLocationController.Get(System.String)">
+            <summary>
+            Get the location of a User by username
+            </summary>
+            <param name="userName"></param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Airbox.Controllers.UserLocationController.GetHistory(System.String)" -->
+        <!-- Badly formed XML comment ignored for member "M:Airbox.Controllers.UserLocationController.GetCurrentLocations" -->
+        <!-- Badly formed XML comment ignored for member "M:Airbox.Controllers.UserLocationController.GetLocationsInArea(System.String)" -->
+    </members>
+</doc>
